@@ -23,7 +23,7 @@ if(!isset($_SESSION["username"])) {
         <aside>
             <p><?php echo $_SESSION["username"]; ?></p>
 
-            <form action="crear_quizz.php" method="get">
+            <form action="../quizz/crear_quizz.php" method="get">
                 <button type="submit">Crear quizz</button>
             </form>
         </aside>
