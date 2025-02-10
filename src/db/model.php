@@ -16,7 +16,7 @@ class Model {
         return self::$instance;
     }
 
-    public function crea_usuario($username, $password, $image = "anon.png") {
+    public function crea_usuario($username, $password) {
         $statement = $this->conn->prepare("INSERT INTO usuarios (username, password) VALUES (:username, :password)");
         $statement->execute(array(":username" => $username, ":password" => crypt($password, "juas")));
         return $statement->rowCount();

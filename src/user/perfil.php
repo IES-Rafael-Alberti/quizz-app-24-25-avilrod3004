@@ -17,11 +17,19 @@ if(!isset($_SESSION["username"])) {
 <body>
     <header>
         <h1>Quizzes</h1>
+        <a href="logout.php">Cerrar sesión</a>
     </header>
 
     <main>
         <aside>
             <p><?php echo $_SESSION["username"]; ?></p>
+            <?php
+                if ($_SESSION["rol"] == "instructor") {
+                    echo "<p>Usuario con rol de instructor</p>";
+                } else {
+                    echo "<p>Usuario con rol de estudiante</p>";
+                }
+            ?>
 
             <form action="../quizz/crear_quizz.php" method="get">
                 <button type="submit">Crear quizz</button>

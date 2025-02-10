@@ -4,7 +4,7 @@ require_once "../db/pdo.php";
 $username = $_POST["username"];
 $password = $_POST["password"];
 
-$statement = $conn->prepare("SELECT username, password FROM usuarios WHERE username = :username");
+$statement = $conn->prepare("SELECT username, password, rol FROM usuarios WHERE username = :username");
 $statement->execute(array(":username" => $username));
 
 $resultado = $statement->fetchObject();
@@ -13,6 +13,7 @@ $veri=password_verify($password, $resultado->password);
 if ($veri) {
     session_start();
     $_SESSION["username"] = $_POST["username"];
+    $_SESSION["rol"] = $resultado->rol;
     session_write_close();
     header("Location: /user/perfil.php");
 } else {
