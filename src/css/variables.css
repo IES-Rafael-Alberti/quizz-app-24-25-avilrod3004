@@ -1,0 +1,11 @@
+:root {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+
+    --primary-color: LightSkyBlue;
+    --primary-color-hover: DeepSkyBlue;
+    --secundary-color: LightSalmon;
+    --secundaty-color-hover: Coral;
+    --white: #EEE;
+    --black: #111;
+}

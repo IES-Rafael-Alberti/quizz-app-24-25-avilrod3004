@@ -1,0 +1,36 @@
+.encabezado {
+    background-color: var(--primary-color);
+
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    padding: 1rem 2rem;
+}
+
+.encabezado__navegacion {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+.navegacion__listado {
+    list-style: none;
+
+    display: flex;
+    gap: 1rem;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.listado__opcion {
+    background-color: var(--white);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.opcion__enlace {
+    text-decoration: none;
+    color: var(--black);
+}
