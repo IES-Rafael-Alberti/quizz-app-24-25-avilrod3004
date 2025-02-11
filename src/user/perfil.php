@@ -27,7 +27,7 @@ if(!isset($_SESSION["username"])) {
         </nav>
     </header>
 
-    <main>
+    <main class="principal">
         <aside>
             <p><?php echo $_SESSION["username"]; ?></p>
 
@@ -39,13 +39,32 @@ if(!isset($_SESSION["username"])) {
                 }
             ?>
 
-            <form action="../quizz/crear_quizz.php" method="get">
-                <button type="submit">Crear quizz</button>
+            <form action="../quizz/new_quiz.php" method="get">
+                <button type="submit">Crear quiz</button>
             </form>
         </aside>
 
         <section>
             <h1>Listado quizzes</h1>
+
+            <?php
+            require_once '../db/model.php';
+            require_once '../db/Cuestionarios.php';
+
+            $my_model = Model::getInstance();
+            $array_quizzes = $my_model->obtener_quizzes_instructor(1)
+            ?>
+
+            <?php
+            foreach ($array_quizzes as $quiz) {
+            ?>
+                <article>
+                    <h1><?= $quiz->getTitle() ?></h1>
+                    <p><?= $quiz->getDescription() ?></p>
+                </article>
+            <?php
+            }
+            ?>
         </section>
     </main>
 
