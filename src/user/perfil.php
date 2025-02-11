@@ -12,17 +12,25 @@ if(!isset($_SESSION["username"])) {
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
     <title>Perfil</title>
 </head>
 <body>
-    <header>
-        <h1>Quizzes</h1>
-        <a href="logout.php">Cerrar sesión</a>
+    <header class="encabezado">
+        <h1 class="encabezado__titulo">Quizzes App</h1>
+
+        <nav class="encabezado__navegacion">
+            <ul class="navegacion__listado">
+                <li class="listado__opcion"><a href="logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+            </ul>
+        </nav>
     </header>
 
     <main>
         <aside>
             <p><?php echo $_SESSION["username"]; ?></p>
+
             <?php
                 if ($_SESSION["rol"] == "instructor") {
                     echo "<p>Usuario con rol de instructor</p>";
