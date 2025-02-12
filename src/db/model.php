@@ -50,6 +50,18 @@ class Model {
         return $statement->fetchAll(PDO::FETCH_CLASS, "Quiz", array("follow" => true));
     }
 
+    public function obtener_quiz($quiz_id) {
+        $statement = $this->conn->prepare("SELECT * FROM quiz WHERE quiz_id = :quiz_id");
+        $statement->execute(array(":quiz_id" => $quiz_id));
+        return $statement->fetchObject("Quiz");
+    }
+
+    public function update_quiz($quiz_id, $title, $description, $owner) {
+        $statement = $this->conn->prepare("UPDATE quiz SET title = :title, description = :description, owner = :owner WHERE quiz_id = :quiz_id");
+        $statement->execute(array(":title" => $title, ":description" => $description, ":owner" => $owner, ":quiz_id" => $quiz_id));
+        return $statement->rowCount();
+    }
+
     public function borrar_quiz($quiz_id) {
         $statement = $this->conn->prepare("DELETE FROM quiz WHERE quiz_id = :quiz_id");
         $statement->execute(array(":quiz_id" => $quiz_id));
