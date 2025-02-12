@@ -38,9 +38,9 @@ class Model {
      * @param $description - Descripción
      * @return int Número de filas afeactadas, 1
      */
-    public function crear_quiz($title, $description) {
-        $statement = $this->conn->prepare("INSERT INTO quiz (title, description) VALUES (:title, :description)");
-        $statement->execute(array(":title" => $title, ":description" => $description));
+    public function crear_quiz($title, $description, $owner) {
+        $statement = $this->conn->prepare("INSERT INTO quiz (title, description, owner) VALUES (:title, :description, :owner)");
+        $statement->execute(array(":title" => $title, ":description" => $description, ":owner" => $owner));
         return $statement->rowCount();
     }
 

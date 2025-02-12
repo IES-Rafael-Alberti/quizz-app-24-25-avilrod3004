@@ -14,5 +14,5 @@ if($resultado) {
     session_write_close();
     header("Location: login.php");
 } else {
-    header("Location: login.php?error=No se ha podido crear el usuario");
+    header("Location: register.php?error=No se ha podido crear el usuario");
 }
