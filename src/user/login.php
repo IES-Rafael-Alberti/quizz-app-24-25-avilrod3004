@@ -24,7 +24,7 @@
         </form>
 
         <?php
-        if(isset($_GET["error"])) {
+        if (isset($_GET["error"])) {
             echo '<span class="error">' . $_GET["error"] . "</span>";
         }
         ?>
