@@ -53,34 +53,36 @@
         if (!empty($array_questions)) {
             foreach ($array_questions as $question) {
         ?>
-            <article>
-                <h1><?= $question->getQuestionText() ?></h1>
+        <article>
+            <h1><?= $question->getQuestionText() ?></h1>
 
-                <ul>
-                    <li>a) <?= $question->getOptionA() ?></li>
-                    <li>b) <?= $question->getOptionB() ?></li>
-                    <li>c) <?= $question->getOptionC() ?></li>
-                    <li>d) <?= $question->getOptionD() ?></li>
-                </ul>
+            <ul>
+                <li>a) <?= $question->getOptionA() ?></li>
+                <li>b) <?= $question->getOptionB() ?></li>
+                <li>c) <?= $question->getOptionC() ?></li>
+                <li>d) <?= $question->getOptionD() ?></li>
+            </ul>
 
-                <p><?= $question->getCorrectOption() ?></p>
+            <p><?= $question->getCorrectOption() ?></p>
 
-                <div>
-                    <form action="" method="post">
-                        <label for="question_id"></label>
-                        <input type="hidden" id="question_id" name="question_id" value="<?= $quiz->getQuestionId() ?>">
+            <div>
+                <form action="" method="post">
+                    <label for="question_id"></label>
+                    <input type="hidden" id="question_id" name="question_id" value="<?= $quiz->getQuestionId() ?>">
 
-                        <input type="submit" value="Editar">
-                    </form>
+                    <input type="submit" value="Editar">
+                </form>
 
-                    <form action="" method="post">
-                        <label for="question_id"></label>
-                        <input type="hidden" id="question_id" name="question_id" value="<?= $quiz->getQuestionId() ?>">
+                <form action="" method="post">
+                    <label for="question_id"></label>
+                    <input type="hidden" id="question_id" name="question_id" value="<?= $quiz->getQuestionId() ?>">
 
-                        <input type="submit" value="Eliminar">
-                    </form>
-                </div>
-            </article>
+                    <input type="submit" value="Eliminar">
+                </form>
+            </div>
+        </article>
+
+        <hr>
         <?php
             }
         } else {

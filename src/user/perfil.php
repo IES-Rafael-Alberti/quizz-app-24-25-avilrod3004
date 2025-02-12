@@ -58,27 +58,27 @@ if(!isset($_SESSION["username"])) {
             <?php
             foreach ($array_quizzes as $quiz) {
             ?>
-                <article>
-                    <h1><?= $quiz->getTitle() ?></h1>
-                    <p><?= $quiz->getDescription() ?></p>
-                    <div>
-                        <form action="../quizz/edit_quiz.php" method="post">
-                            <label for="quiz_id"></label>
-                            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+            <article>
+                <h1><?= $quiz->getTitle() ?></h1>
+                <p><?= $quiz->getDescription() ?></p>
+                <div>
+                    <form action="../quizz/edit_quiz.php" method="post">
+                        <label for="quiz_id"></label>
+                        <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
-                            <input type="submit" value="Editar">
-                        </form>
+                        <input type="submit" value="Editar">
+                    </form>
 
-                        <form action="../quizz/delete_quiz.php" method="post">
-                            <label for="quiz_id"></label>
-                            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+                    <form action="../quizz/delete_quiz.php" method="post">
+                        <label for="quiz_id"></label>
+                        <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
-                            <input type="submit" value="Eliminar">
-                        </form>
-                    </div>
-                </article>
+                        <input type="submit" value="Eliminar">
+                    </form>
+                </div>
+            </article>
 
-                <hr>
+            <hr>
             <?php
             }
             ?>
