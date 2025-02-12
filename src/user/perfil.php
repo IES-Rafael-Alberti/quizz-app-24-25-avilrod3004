@@ -49,7 +49,7 @@ if(!isset($_SESSION["username"])) {
 
             <?php
             require_once '../db/model.php';
-            require_once '../db/Cuestionarios.php';
+            require_once '../db/Quiz.php';
 
             $my_model = Model::getInstance();
             $array_quizzes = $my_model->obtener_quizzes_instructor(1)

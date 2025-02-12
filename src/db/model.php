@@ -47,7 +47,7 @@ class Model {
     public function obtener_quizzes_instructor($id_instructor) {
         $statement = $this->conn->prepare("SELECT * FROM quiz WHERE owner = :id_instructor");
         $statement->execute(array(":id_instructor" => $id_instructor));
-        return $statement->fetchAll(PDO::FETCH_CLASS, "Cuestionarios", array("follow" => true));
+        return $statement->fetchAll(PDO::FETCH_CLASS, "Quiz", array("follow" => true));
     }
 
     public function borrar_quiz($quiz_id) {

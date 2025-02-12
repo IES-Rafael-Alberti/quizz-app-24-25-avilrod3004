@@ -1,5 +1,5 @@
 <?php
-class Cuestionarios {
+class Quiz {
     private $quiz_id;
     private $title;
     private $description;
