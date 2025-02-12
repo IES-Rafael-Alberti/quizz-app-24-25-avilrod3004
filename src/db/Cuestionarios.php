@@ -1,6 +1,6 @@
 <?php
 class Cuestionarios {
-    private $id;
+    private $quiz_id;
     private $title;
     private $description;
     private $owner;
@@ -9,12 +9,12 @@ class Cuestionarios {
 
     }
 
-    public function getId() {
-        return $this->id;
+    public function getQuizId() {
+        return $this->quiz_id;
     }
 
-    public function setId($id) {
-        $this->id = $id;
+    public function setQuizId($quiz_id) {
+        $this->quiz_id = $quiz_id;
     }
 
     public function getTitle() {

@@ -49,4 +49,10 @@ class Model {
         $statement->execute(array(":id_instructor" => $id_instructor));
         return $statement->fetchAll(PDO::FETCH_CLASS, "Cuestionarios", array("follow" => true));
     }
+
+    public function borrar_quiz($quiz_id) {
+        $statement = $this->conn->prepare("DELETE FROM quiz WHERE quiz_id = :quiz_id");
+        $statement->execute(array(":quiz_id" => $quiz_id));
+        return $statement->rowCount();
+    }
 }
