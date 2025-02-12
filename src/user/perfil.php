@@ -52,7 +52,7 @@ if(!isset($_SESSION["username"])) {
             require_once '../db/Quiz.php';
 
             $my_model = Model::getInstance();
-            $array_quizzes = $my_model->obtener_quizzes_instructor(1)
+            $array_quizzes = $my_model->obtener_quizzes_instructor($_SESSION["id"]);
             ?>
 
             <?php
