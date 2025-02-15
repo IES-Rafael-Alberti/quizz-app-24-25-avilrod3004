@@ -82,7 +82,7 @@
             <p>Respueta correcta: <?= $question->getCorrectOption() ?></p>
 
             <div>
-                <form action="" method="post">
+                <form action="../questions/edit_question.php" method="post">
                     <label for="question_id"></label>
                     <input type="hidden" id="question_id" name="question_id" value="<?= $question->getQuestionId() ?>">
                     <input type="submit" value="Editar">
