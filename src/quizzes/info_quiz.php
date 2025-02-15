@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/body.css">
-    <title>Editar quiz</title>
+    <title>Info quiz</title>
 </head>
 <body class="contenedor">
     <header class="encabezado">
@@ -53,57 +53,53 @@
         </form>
     </aside>
 
-<!--    <main class="principal">-->
-<!--        <h1>Preguntas</h1>-->
-<!---->
-<!--        --><?php
-//        require_once '../db/model.php';
-//        require_once '../db/Question.php';
-//
-//        $my_model = Model::getInstance();
-//        $array_questions = $my_model->obtener_preguntas_quiz($quiz_id);
-//        ?>
-<!---->
-<!--        --><?php
-//        if (!empty($array_questions)) {
-//            foreach ($array_questions as $question) {
-//                ?>
-<!--                <article>-->
-<!--                    <h1>--><?php //= $question->getQuestionText() ?><!--</h1>-->
-<!---->
-<!--                    <ul>-->
-<!--                        <li>a) --><?php //= $question->getOptionA() ?><!--</li>-->
-<!--                        <li>b) --><?php //= $question->getOptionB() ?><!--</li>-->
-<!--                        <li>c) --><?php //= $question->getOptionC() ?><!--</li>-->
-<!--                        <li>d) --><?php //= $question->getOptionD() ?><!--</li>-->
-<!--                    </ul>-->
-<!---->
-<!--                    <p>--><?php //= $question->getCorrectOption() ?><!--</p>-->
-<!---->
-<!--                    <div>-->
-<!--                        <form action="" method="post">-->
-<!--                            <label for="question_id"></label>-->
-<!--                            <input type="hidden" id="question_id" name="question_id" value="--><?php //= $question->getQuestionId() ?><!--">-->
-<!--                            <input type="submit" value="Editar">-->
-<!--                        </form>-->
-<!---->
-<!--                        <form action="" method="post">-->
-<!--                            <label for="question_id"></label>-->
-<!--                            <input type="hidden" id="question_id" name="question_id" value="--><?php //= $question->getQuestionId() ?><!--">-->
-<!--                            <input type="submit" value="Eliminar">-->
-<!--                        </form>-->
-<!--                    </div>-->
-<!--                </article>-->
-<!---->
-<!--                <hr>-->
-<!--        --><?php
-//            } // Aquí se cierra correctamente el foreach
-//        } else {
-//            echo "<p>Este quiz no tiene preguntas</p>";
-//        }
-//        ?>
-<!---->
-<!--    </main>-->
+    <main class="principal">
+        <h1>Preguntas</h1>
+
+        <?php
+        require_once '../db/Question.php';
+
+        $my_model = Model::getInstance();
+        $array_questions = $my_model->obtener_preguntas_quiz($quiz_id);
+        ?>
+
+        <?php
+        if (empty($array_questions)) {
+            echo "<p>Este quiz no tiene preguntas</p>";
+        } else {
+            foreach ($array_questions as $question) {
+        ?>
+        <article>
+            <h1><?= $question->getQuestionText() ?></h1>
+
+            <ul>
+                <li>a) <?= $question->getOptionA() ?></li>
+                <li>b) <?= $question->getOptionB() ?></li>
+                <li>c) <?= $question->getOptionC() ?></li>
+                <li>d) <?= $question->getOptionD() ?></li>
+            </ul>
+
+            <p><?= $question->getCorrectOption() ?></p>
+
+            <div>
+                <form action="" method="post">
+                    <label for="question_id"></label>
+                    <input type="hidden" id="question_id" name="question_id" value="<?= $question->getQuestionId() ?>">
+                    <input type="submit" value="Editar">
+                </form>
+
+                <form action="" method="post">
+                    <label for="question_id"></label>
+                    <input type="hidden" id="question_id" name="question_id" value="<?= $question->getQuestionId() ?>">
+                    <input type="submit" value="Eliminar">
+                </form>
+            </div>
+        </article>
+        <?php
+            }
+        }
+        ?>
+    </main>
 
     <footer class="pie">
         <p>soy el footer</p>
