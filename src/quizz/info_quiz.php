@@ -5,9 +5,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/body.css">
     <title>Editar quiz</title>
 </head>
-<body>
+<body class="contenedor">
+    <header class="encabezado">
+        <h1 class="encabezado__titulo">Quizzes App</h1>
+
+        <nav class="encabezado__navegacion">
+            <ul class="navegacion__listado">
+                <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+
     <?php
     require_once '../db/model.php';
     require_once '../db/Quiz.php';
@@ -22,33 +35,22 @@
     $quiz = $my_model->obtener_quiz($quiz_id);
     ?>
 
-    <aside>
+    <aside class="lateral">
         <h1>Quiz - <?= $quiz->getTitle() ?></h1>
-        <form action="../quizz/update_quiz.php" method="post">
+        <p><?= $quiz->getDescription() ?></p>
+
+        <form action="edit_quiz.php" method="post">
             <label for="quiz_id"></label>
-            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz_id ?>">
 
-            <label for="title">Titulo</label>
-            <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>">
-
-            <label for="description">Descripción</label>
-            <textarea name="description" id="description"  cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
-
-            <input type="submit" value="Guardar">
+            <input type="submit" value="Editar quiz">
         </form>
-
-        <?php
-        if (isset($_GET["error"])) {
-            echo '<span class="error">' . $_GET["error"] . "</span>";
-        }
-        ?>
-
         <form action="" method="post">
             <input type="submit" value="Añadir pregunta">
         </form>
     </aside>
 
-    <section>
+    <main class="principal">
         <h1>Preguntas</h1>
 
         <?php
@@ -99,7 +101,10 @@
             echo "<p>Este quiz no tiene preguntas</p>";
         }
         ?>
+    </main>
 
-    </section>
+    <footer class="pie">
+        <p>soy el footer</p>
+    </footer>
 </body>
 </html>
