@@ -23,7 +23,7 @@ $quiz = $my_model->obtener_quiz($quiz_id);
 ?>
 
 <h1>Quiz - <?= $quiz->getTitle() ?></h1>
-<form action="../quizz/update_quiz.php" method="post">
+<form action="update_quiz.php" method="post">
     <label for="quiz_id"></label>
     <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
