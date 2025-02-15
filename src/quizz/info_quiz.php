@@ -23,15 +23,25 @@
     ?>
 
     <aside>
-        <form action="" method="post">
+        <h1>Quiz - <?= $quiz->getTitle() ?></h1>
+        <form action="../quizz/update_quiz.php" method="post">
+            <label for="quiz_id"></label>
+            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+
             <label for="title">Titulo</label>
             <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>">
 
             <label for="description">Descripción</label>
-            <textarea name="" id="description" cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
+            <textarea name="description" id="description"  cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
 
             <input type="submit" value="Guardar">
         </form>
+
+        <?php
+        if (isset($_GET["error"])) {
+            echo '<span class="error">' . $_GET["error"] . "</span>";
+        }
+        ?>
 
         <form action="" method="post">
             <input type="submit" value="Añadir pregunta">
