@@ -72,14 +72,14 @@
         <article>
             <h1><?= $question->getQuestionText() ?></h1>
 
-            <ul>
-                <li>a) <?= $question->getOptionA() ?></li>
-                <li>b) <?= $question->getOptionB() ?></li>
-                <li>c) <?= $question->getOptionC() ?></li>
-                <li>d) <?= $question->getOptionD() ?></li>
-            </ul>
+            <ol type="a">
+                <li><?= $question->getOptionA() ?></li>
+                <li><?= $question->getOptionB() ?></li>
+                <li><?= $question->getOptionC() ?></li>
+                <li><?= $question->getOptionD() ?></li>
+            </ol>
 
-            <p><?= $question->getCorrectOption() ?></p>
+            <p>Respueta correcta: <?= $question->getCorrectOption() ?></p>
 
             <div>
                 <form action="" method="post">
@@ -95,6 +95,8 @@
                 </form>
             </div>
         </article>
+
+        <hr>
         <?php
             }
         }
