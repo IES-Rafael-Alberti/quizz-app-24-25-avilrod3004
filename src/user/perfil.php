@@ -29,13 +29,13 @@ if (!isset($_SESSION["username"])) {
     </header>
 
     <aside class="lateral">
-        <p><?php echo $_SESSION["username"]; ?></p>
+        <p class="lateral__nombre-usuario"><?php echo $_SESSION["username"]; ?></p>
 
         <?php
         if ($_SESSION["rol"] == "instructor") {
-            echo "<p>Usuario con rol de instructor</p>";
+            echo "<p class='lateral__rol-usuario'>Usuario con rol de instructor</p>";
         } else {
-            echo "<p>Usuario con rol de estudiante</p>";
+            echo "<p class='lateral__rol-usuario'>Usuario con rol de estudiante</p>";
         }
         ?>
 
