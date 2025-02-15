@@ -83,6 +83,7 @@ if (!isset($_SESSION["username"])) {
         }
         ?>
     </main>
+
     <footer class="pie">
         <p>soy el footer</p>
     </footer>
