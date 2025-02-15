@@ -39,7 +39,7 @@ if (!isset($_SESSION["username"])) {
         }
         ?>
 
-        <form action="../quizz/new_quiz.php" method="get">
+        <form action="../quizzes/new_quiz.php" method="get">
             <button type="submit">Crear quiz</button>
         </form>
     </aside>
@@ -62,14 +62,14 @@ if (!isset($_SESSION["username"])) {
                 <h1><?= $quiz->getTitle() ?></h1>
                 <p><?= $quiz->getDescription() ?></p>
                 <div>
-                    <form action="../quizz/info_quiz.php" method="post">
+                    <form action="../quizzes/info_quiz.php" method="post">
                         <label for="quiz_id"></label>
                         <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
                         <input type="submit" value="Consultar">
                     </form>
 
-                    <form action="../quizz/delete_quiz.php" method="post">
+                    <form action="../quizzes/delete_quiz.php" method="post">
                         <label for="quiz_id"></label>
                         <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
