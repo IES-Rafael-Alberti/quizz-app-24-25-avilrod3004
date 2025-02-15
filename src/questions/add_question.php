@@ -3,6 +3,12 @@ session_start();
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
 }
+
+if (!isset($_POST["quiz_id"])) {
+    die("Error: No se ha proporcionado un ID de quiz.");
+}
+
+$quiz_id = $_POST["quiz_id"];
 ?>
 
 <!doctype html>
@@ -16,7 +22,10 @@ if (!isset($_SESSION["username"])) {
 </head>
 <body>
 <main>
-    <form action="" method="post">
+    <form action="create_question.php" method="post">
+        <label for="quiz_id"></label>
+        <input type="text" name="quiz_id" id="quiz_id" hidden="hidden" value="<?= $quiz_id ?>">
+
         <label for="question_text">Pregunta</label>
         <input type="text" id="question_text" name="question_text">
 
