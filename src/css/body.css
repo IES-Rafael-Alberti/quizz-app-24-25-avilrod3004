@@ -6,8 +6,11 @@
         "header header"
         "aside main"
         "footer footer";
+
     height: 100vh; /* Para que la grid ocupe toda la pantalla */
 }
+
+/* --- HEADER - ENCABEZADO --- */
 
 .encabezado {
     grid-area: header;
@@ -15,17 +18,35 @@
     padding: 10px;
 }
 
+
+/* --- ASIDE - LATERAL --- */
+
 .lateral {
     grid-area: aside;
     background-color: #f4f4f4; /* Color de fondo */
     padding: 15px;
 }
 
+.lateral__nombre-usuario {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.lateral__rol-usuario {
+
+}
+
+
+/* --- MAIN - PRINCIPAL --- */
+
 .principal {
     grid-area: main;
     background-color: white;
     padding: 15px;
 }
+
+
+/* --- FOOTER - PIE --- */
 
 .pie {
     grid-area: footer;
