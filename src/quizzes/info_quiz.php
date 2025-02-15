@@ -95,8 +95,6 @@
                 </form>
             </div>
         </article>
-
-        <hr>
         <?php
             }
         }
