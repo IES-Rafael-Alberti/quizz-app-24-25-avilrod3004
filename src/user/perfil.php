@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION["username"])) {
+if (!isset($_SESSION["username"])) {
     header("Location: login.php");
 }
 ?>
@@ -14,9 +14,10 @@ if(!isset($_SESSION["username"])) {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/body.css">
     <title>Perfil</title>
 </head>
-<body>
+<body class="contenedor">
     <header class="encabezado">
         <h1 class="encabezado__titulo">Quizzes App</h1>
 
@@ -27,46 +28,45 @@ if(!isset($_SESSION["username"])) {
         </nav>
     </header>
 
+    <aside class="lateral">
+        <p><?php echo $_SESSION["username"]; ?></p>
+
+        <?php
+        if ($_SESSION["rol"] == "instructor") {
+            echo "<p>Usuario con rol de instructor</p>";
+        } else {
+            echo "<p>Usuario con rol de estudiante</p>";
+        }
+        ?>
+
+        <form action="../quizz/new_quiz.php" method="get">
+            <button type="submit">Crear quiz</button>
+        </form>
+    </aside>
+
     <main class="principal">
-        <aside>
-            <p><?php echo $_SESSION["username"]; ?></p>
+        <h1>Listado quizzes</h1>
 
-            <?php
-                if ($_SESSION["rol"] == "instructor") {
-                    echo "<p>Usuario con rol de instructor</p>";
-                } else {
-                    echo "<p>Usuario con rol de estudiante</p>";
-                }
-            ?>
+        <?php
+        require_once '../db/model.php';
+        require_once '../db/Quiz.php';
 
-            <form action="../quizz/new_quiz.php" method="get">
-                <button type="submit">Crear quiz</button>
-            </form>
-        </aside>
+        $my_model = Model::getInstance();
+        $array_quizzes = $my_model->obtener_quizzes_instructor($_SESSION["id"]);
+        ?>
 
-        <section>
-            <h1>Listado quizzes</h1>
-
-            <?php
-            require_once '../db/model.php';
-            require_once '../db/Quiz.php';
-
-            $my_model = Model::getInstance();
-            $array_quizzes = $my_model->obtener_quizzes_instructor($_SESSION["id"]);
-            ?>
-
-            <?php
-            foreach ($array_quizzes as $quiz) {
+        <?php
+        foreach ($array_quizzes as $quiz) {
             ?>
             <article>
                 <h1><?= $quiz->getTitle() ?></h1>
                 <p><?= $quiz->getDescription() ?></p>
                 <div>
-                    <form action="../quizz/edit_quiz.php" method="post">
+                    <form action="../quizz/info_quiz.php" method="post">
                         <label for="quiz_id"></label>
                         <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
-                        <input type="submit" value="Editar">
+                        <input type="submit" value="Consultar">
                     </form>
 
                     <form action="../quizz/delete_quiz.php" method="post">
@@ -80,13 +80,11 @@ if(!isset($_SESSION["username"])) {
 
             <hr>
             <?php
-            }
-            ?>
-        </section>
+        }
+        ?>
     </main>
-
-    <footer>
-
+    <footer class="pie">
+        <p>soy el footer</p>
     </footer>
 </body>
 </html>
