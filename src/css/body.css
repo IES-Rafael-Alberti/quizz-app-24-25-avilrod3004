@@ -45,14 +45,18 @@
     padding: 1rem;
 
     text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.lateral__nombre-usuario {
+.lateral__nombre {
     font-size: 3rem;
     font-weight: bolder;
 }
 
-.lateral__info-usuario {
+.lateral__info {
     font-size: 1.5rem;
 }
 
@@ -85,7 +89,7 @@
     color: grey;
 }
 
-.quiz {
+.quiz, .question {
     border-radius: 1rem;
     padding: 1rem;
     box-shadow: grey 0.2rem 0.5rem 1rem;
@@ -100,9 +104,14 @@
     flex-direction: column;
 }
 
-.quiz__acciones {
+.quiz__acciones, .question__acciones {
     display: flex;
     gap: 1rem;
+}
+
+.question__listado {
+    list-style: upper-latin;
+    padding-left: 2 rem;
 }
 
 .principal-formulario {
@@ -159,6 +168,7 @@ input[type="text"], textarea {
     border-radius: 0.5rem;
     width: 75%;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 .boton__consultar {

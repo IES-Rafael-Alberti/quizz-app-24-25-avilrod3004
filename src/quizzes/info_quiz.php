@@ -5,21 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=../css/reset.css>
     <link rel="stylesheet" href="../css/variables.css">
     <link rel="stylesheet" type="text/css" href="../css/header.css">
     <link rel="stylesheet" type="text/css" href="../css/body.css">
     <title>Info quiz</title>
 </head>
 <body class="contenedor">
-    <header class="encabezado">
-        <h1 class="encabezado__titulo">Quizzes App</h1>
-
-        <nav class="encabezado__navegacion">
-            <ul class="navegacion__listado">
-                <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
-            </ul>
-        </nav>
-    </header>
+<header class="encabezado">
+    <img src="../img/quizzes!.png" alt="Quizzes App" class="encabezado__logo">
+    <nav class="encabezado__navegacion">
+        <ul class="navegacion__listado">
+            <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+        </ul>
+    </nav>
+</header>
 
     <?php
     require_once '../db/model.php';
@@ -36,25 +36,25 @@
     ?>
 
     <aside class="lateral">
-        <h1>Quiz - <?= $quiz->getTitle() ?></h1>
-        <p><?= $quiz->getDescription() ?></p>
+        <h1 class="lateral__nombre"><?= $quiz->getTitle() ?></h1>
+        <p class="lateral__info"><?= $quiz->getDescription() ?></p>
 
         <form action="edit_quiz.php" method="post">
             <label for="quiz_id"></label>
             <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz_id ?>">
 
-            <input type="submit" value="Editar quiz">
+            <input type="submit" value="Editar quiz" class="boton">
         </form>
         <form action="../questions/add_question.php" method="post">
             <label for="quiz_id"></label>
             <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz_id ?>">
 
-            <input type="submit" value="Añadir pregunta">
+            <button type="submit" class="boton">Añadir pregunta</button>
         </form>
     </aside>
 
     <main class="principal">
-        <h1>Preguntas</h1>
+        <h1 class="principal__titulo">Preguntas</h1>
 
         <?php
         require_once '../db/Question.php';
@@ -65,33 +65,37 @@
 
         <?php
         if (empty($array_questions)) {
-            echo "<p>Este quiz no tiene preguntas</p>";
+            echo "
+                    <div class='principal__sin-contenido'>
+                        <p class='sin-contenido__texto'>Este quiz no tiene preguntas</p>
+                    </div>
+                ";
         } else {
             foreach ($array_questions as $question) {
         ?>
-        <article>
-            <h1><?= $question->getQuestionText() ?></h1>
+        <article class="question">
+            <h1 class="question__pregunta"><?= $question->getQuestionText() ?></h1>
 
-            <ol type="a">
-                <li><?= $question->getOptionA() ?></li>
-                <li><?= $question->getOptionB() ?></li>
-                <li><?= $question->getOptionC() ?></li>
-                <li><?= $question->getOptionD() ?></li>
+            <ol type="a" class="question__listado">
+                <li class="listado-question__opcion"><?= $question->getOptionA() ?></li>
+                <li class="listado-question__opcion"><?= $question->getOptionB() ?></li>
+                <li class="listado-question__opcion"><?= $question->getOptionC() ?></li>
+                <li class="listado-question__opcion"><?= $question->getOptionD() ?></li>
             </ol>
 
-            <p>Respueta correcta: <?= $question->getCorrectOption() ?></p>
+            <p class="question__correcta">Respueta correcta: <?= $question->getCorrectOption() ?></p>
 
-            <div>
+            <div class="question__acciones">
                 <form action="../questions/edit_question.php" method="post">
                     <label for="question_id"></label>
                     <input type="hidden" id="question_id" name="question_id" value="<?= $question->getQuestionId() ?>">
-                    <input type="submit" value="Editar">
+                    <input type="submit" value="Editar" class="boton__consultar">
                 </form>
 
                 <form action="../questions/delete_question.php" method="post">
                     <label for="question_id"></label>
                     <input type="hidden" id="question_id" name="question_id" value="<?= $question->getQuestionId() ?>">
-                    <input type="submit" value="Eliminar">
+                    <input type="submit" value="Eliminar" class="boton__eliminar">
                 </form>
             </div>
         </article>

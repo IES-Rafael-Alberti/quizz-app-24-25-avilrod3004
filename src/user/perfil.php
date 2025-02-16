@@ -37,17 +37,17 @@ if (!isset($_SESSION["username"])) {
     ?>
 
     <aside class="lateral">
-        <h1 class="lateral__nombre-usuario"><?php echo $_SESSION["username"]; ?></h1>
+        <h1 class="lateral__nombre"><?php echo $_SESSION["username"]; ?></h1>
 
         <?php
         if ($_SESSION["rol"] == "instructor") {
-            echo "<p class='lateral__info-usuario'>Rol: instructor</p>";
+            echo "<p class='lateral__info'>Rol: instructor</p>";
         } else {
-            echo "<p class='lateral__info-usuario'>Rol: estudiante</p>";
+            echo "<p class='lateral__info'>Rol: estudiante</p>";
         }
         ?>
 
-        <p class="lateral__info-usuario">Quizzes creados: <?= count($array_quizzes) ?></p>
+        <p class="lateral__info">Quizzes creados: <?= count($array_quizzes) ?></p>
 
         <form action="../quizzes/new_quiz.php" method="get">
             <button type="submit" class="boton">Crear quiz</button>
