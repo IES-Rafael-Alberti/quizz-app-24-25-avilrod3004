@@ -149,6 +149,14 @@ input[type="text"], textarea {
     padding: 0.2rem 0.5rem;
 }
 
+.formulario__correct_option {
+    /*appearance: none; !* Elimina los estilos por defecto *!*/
+    background-color: var(--white);
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 /* --- FOOTER - PIE --- */
 
