@@ -177,6 +177,16 @@ input[type="text"], input[type="password"], textarea {
     cursor: pointer;
 }
 
+.lista-resultado {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.pregunta__enunciado {
+    font-weight: bolder;
+}
+
 
 /* --- FOOTER - PIE --- */
 

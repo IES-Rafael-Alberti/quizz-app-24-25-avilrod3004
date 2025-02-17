@@ -121,7 +121,7 @@ if (!isset($_SESSION["username"])) {
                     </div>
 
                     <div class="quiz__acciones">
-                        <form action="../quizzes/info_quiz.php" method="post">
+                        <form action="../quizzes/quiz.php" method="post">
                             <label for="quiz_id"></label>
                             <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
