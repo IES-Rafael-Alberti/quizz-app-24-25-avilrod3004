@@ -5,9 +5,21 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=../css/reset.css>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/body.css">
     <title>Editar quiz</title>
 </head>
-<body>
+<body class="contenedor-formulario">
+    <header class="encabezado">
+        <img src="../img/quizzes!.png" alt="Quizzes App" class="encabezado__logo">
+        <nav class="encabezado__navegacion">
+            <ul class="navegacion__listado">
+                <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
     <?php
     require_once '../db/model.php';
     require_once '../db/Quiz.php';
@@ -22,25 +34,32 @@
     $quiz = $my_model->obtener_quiz($quiz_id);
     ?>
 
-    <h1>Quiz - <?= $quiz->getTitle() ?></h1>
-    <form action="update_quiz.php" method="post">
-        <label for="quiz_id"></label>
-        <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+    <main class="principal-formulario">
+        <h1 class="principal__titulo">Editar quiz: <?= $quiz->getTitle() ?></h1>
 
-        <label for="title">Titulo</label>
-        <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>">
+        <form action="update_quiz.php" method="post" class="principal-formulario__formulario">
+            <label for="quiz_id"></label>
+            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
 
-        <label for="description">Descripción</label>
-        <textarea name="description" id="description"  cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
+            <label for="title">Titulo</label>
+            <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>">
 
-        <input type="submit" value="Guardar">
-    </form>
+            <label for="description">Descripción</label>
+            <textarea name="description" id="description"  cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
 
-    <?php
-    if (isset($_GET["error"])) {
-        echo '<span class="error">' . $_GET["error"] . "</span>";
-    }
-    ?>
+            <button type="submit" class="boton">Guardar cambios</button>
+        </form>
+
+        <?php
+        if (isset($_GET["error"])) {
+            echo '<span class="error">' . $_GET["error"] . "</span>";
+        }
+        ?>
+    </main>
+
+    <footer class="pie">
+        <p>soy el footer</p>
+    </footer>
 </body>
 </html>
 
