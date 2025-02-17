@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html lang="es">
 <head>
@@ -43,8 +47,9 @@
         </form>
 
         <?php
-        if(isset($_GET["error"])) {
-            echo '<span class="error">' . $_GET["error"] . "</span>";
+        if (isset($_SESSION["error"])) {
+            echo '<p class="error">' . $_SESSION["error"] . "</p>";
+            unset($_SESSION["error"]);
         }
         ?>
     </main>

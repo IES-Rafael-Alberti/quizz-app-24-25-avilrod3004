@@ -3,8 +3,10 @@
 require_once '../db/model.php';
 
 session_start();
+
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
+    exit();
 }
 
 $question_id = $_POST["question_id"];
@@ -20,8 +22,8 @@ $my_model = Model::getInstance();
 
 $resultado = $my_model->update_question($question_id, $question_text, $option_a, $option_b, $option_c, $option_d, $correct_option);
 
-if ($resultado) {
-    header('Location: ../user/perfil.php');
-} else {
-    header('Location: ../user/perfil.php?error=No se ha podido actualizar la pregunta');
+if (!$resultado) {
+    $_SESSION["error"] = "No se ha podido actualizar la pregunta.";
 }
+header("Location: " . $_SERVER['HTTP_REFERER']);
+exit();
