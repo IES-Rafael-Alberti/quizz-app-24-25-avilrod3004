@@ -46,13 +46,13 @@ if (!isset($_SESSION["username"])) {
 
         <form action="update_quiz.php" method="post" class="principal-formulario__formulario">
             <label for="quiz_id"></label>
-            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>">
+            <input type="hidden" id="quiz_id" name="quiz_id" value="<?= $quiz->getQuizId() ?>" required>
 
             <label for="title">Titulo</label>
-            <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>">
+            <input type="text" id="title" name="title" value="<?= $quiz->getTitle() ?>" required>
 
             <label for="description">Descripción</label>
-            <textarea name="description" id="description"  cols="30" rows="5"><?= $quiz->getDescription() ?></textarea>
+            <textarea name="description" id="description"  cols="30" rows="5" required><?= $quiz->getDescription() ?></textarea>
 
             <button type="submit" class="boton">Guardar cambios</button>
         </form>

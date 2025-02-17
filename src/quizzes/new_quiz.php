@@ -32,10 +32,10 @@ if (!isset($_SESSION["username"])) {
         <h1 class="principal__titulo">Nuevo quiz</h1>
         <form action="create_quiz.php" method="post" class="principal-formulario__formulario">
             <label for="title">Titulo</label>
-            <input type="text" id="title" name="title">
+            <input type="text" id="title" name="title" required>
 
             <label for="description">Descripción</label>
-            <textarea name="description" id="description" cols="30" rows="5"></textarea>
+            <textarea name="description" id="description" cols="30" rows="5" required></textarea>
 
             <button type="submit" class="boton">Registrar quiz</button>
         </form>

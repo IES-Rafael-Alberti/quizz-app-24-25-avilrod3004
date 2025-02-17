@@ -27,13 +27,14 @@
 
         <form action="create_user.php" method="post" class="principal-formulario__formulario">
             <label for="username">Nombre de usuario</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
 
             <label for="rol">Tipo de perfil</label>
-            <select name="rol" id="rol" class="formulario__select">
+            <select name="rol" id="rol" class="formulario__select" required>
+                <option value="">Selecciona una opción</option>
                 <option value="estudiante">Estudiante</option>
                 <option value="instructor">Instructor</option>
             </select>

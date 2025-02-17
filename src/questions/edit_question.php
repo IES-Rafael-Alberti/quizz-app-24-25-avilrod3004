@@ -49,22 +49,23 @@ if (!isset($_SESSION["username"])) {
             <input type="text" name="question_id" id="question_id" hidden="hidden" value="<?= $question->getQuestionId() ?>">
 
             <label for="question_text">Pregunta</label>
-            <input type="text" id="question_text" name="question_text" value="<?= $question->getQuestionText() ?>">
+            <input type="text" id="question_text" name="question_text" value="<?= $question->getQuestionText() ?>" required>
 
             <label for="option_a">Opción A</label>
-            <input type="text" id="option_a" name="option_a" value="<?= $question->getOptionA() ?>">
+            <input type="text" id="option_a" name="option_a" value="<?= $question->getOptionA() ?>" required>
 
             <label for="option_b">Opción B</label>
-            <input type="text" id="option_b" name="option_b" value="<?= $question->getOptionB() ?>">
+            <input type="text" id="option_b" name="option_b" value="<?= $question->getOptionB() ?>" required>
 
             <label for="option_c">Opción C</label>
-            <input type="text" id="option_c" name="option_c" value="<?= $question->getOptionC() ?>">
+            <input type="text" id="option_c" name="option_c" value="<?= $question->getOptionC() ?>" required>
 
             <label for="option_d">Opción D</label>
-            <input type="text" id="option_d" name="option_d" value="<?= $question->getOptionD() ?>">
+            <input type="text" id="option_d" name="option_d" value="<?= $question->getOptionD() ?>" required>
 
             <label for="correct_option">Opción correcta</label>
-            <select name="correct_option" id="correct_option" class="formulario__correct_option">
+            <select name="correct_option" id="correct_option" class="formulario__correct_option" required>
+                <option value="">Selecciona una opción</option>
                 <option value="a" <?= $question->getCorrectOption() === 'a' ? 'selected' : '' ?>>A</option>
                 <option value="b" <?= $question->getCorrectOption() === 'b' ? 'selected' : '' ?>>B</option>
                 <option value="c" <?= $question->getCorrectOption() === 'c' ? 'selected' : '' ?>>C</option>

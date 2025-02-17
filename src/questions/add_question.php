@@ -42,22 +42,23 @@ $quiz_id = $_POST["quiz_id"];
             <input type="text" name="quiz_id" id="quiz_id" hidden="hidden" value="<?= $quiz_id ?>">
 
             <label for="question_text">Pregunta</label>
-            <input type="text" id="question_text" name="question_text">
+            <input type="text" id="question_text" name="question_text" required>
 
             <label for="option_a">Opción A</label>
-            <input type="text" id="option_a" name="option_a">
+            <input type="text" id="option_a" name="option_a" required>
 
             <label for="option_b">Opción B</label>
-            <input type="text" id="option_b" name="option_b">
+            <input type="text" id="option_b" name="option_b" required>
 
             <label for="option_c">Opción C</label>
-            <input type="text" id="option_c" name="option_c">
+            <input type="text" id="option_c" name="option_c" required>
 
             <label for="option_d">Opción D</label>
-            <input type="text" id="option_d" name="option_d">
+            <input type="text" id="option_d" name="option_d" required>
 
             <label for="correct_option">Opción correcta</label>
-            <select name="correct_option" id="correct_option" class="formulario__correct_option">
+            <select name="correct_option" id="correct_option" class="formulario__correct_option" required>
+                <option value="">Selecciona una opción</option>
                 <option value="a">A</option>
                 <option value="b">B</option>
                 <option value="c">C</option>

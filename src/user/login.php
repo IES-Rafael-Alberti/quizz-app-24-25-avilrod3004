@@ -26,10 +26,10 @@
         <h1 class="principal__titulo">Iniciar sesión</h1>
         <form action="check_user.php" method="post" class="principal-formulario__formulario">
             <label for="username">Usuario</label>
-            <input type="text" id="username" name="username">
+            <input type="text" id="username" name="username" required>
 
             <label for="password">Contraseña</label>
-            <input type="password" id="password" name="password">
+            <input type="password" id="password" name="password" required>
 
             <button type="submit" class="boton">Acceder</button>
         </form>
