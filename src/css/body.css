@@ -170,8 +170,7 @@ input[type="text"], input[type="password"], textarea {
     padding: 0.2rem 0.5rem;
 }
 
-.formulario__correct_option {
-    /*appearance: none; !* Elimina los estilos por defecto *!*/
+.formulario__correct_option, .formulario__select {
     background-color: var(--white);
     padding: 5px;
     border-radius: 5px;

@@ -32,6 +32,12 @@
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password">
 
+            <label for="rol">Tipo de perfil</label>
+            <select name="rol" id="rol" class="formulario__select">
+                <option value="estudiante">Estudiante</option>
+                <option value="instructor">Instructor</option>
+            </select>
+
             <button type="submit" class="boton">Crear cuenta</button>
         </form>
 

@@ -17,9 +17,9 @@ class Model {
     }
 
     // TABLA DE USUARIOS - USUARIOS
-    public function crea_usuario($username, $password) {
-        $statement = $this->conn->prepare("INSERT INTO usuarios (username, password) VALUES (:username, :password)");
-        $statement->execute(array(":username" => $username, ":password" => crypt($password, "juas")));
+    public function crea_usuario($username, $password, $rol) {
+        $statement = $this->conn->prepare("INSERT INTO usuarios (username, password, rol) VALUES (:username, :password, :rol)");
+        $statement->execute(array(":username" => $username, ":password" => crypt($password, "juas"), ":rol" => $rol));
         return $statement->rowCount();
     }
 
@@ -32,12 +32,6 @@ class Model {
 
     // TABLA DE CUESTIONARIOS - QUIZ
 
-    /**
-     * Registrar un nuevo quiz
-     * @param $title - Título
-     * @param $description - Descripción
-     * @return int Número de filas afeactadas, 1
-     */
     public function crear_quiz($title, $description, $owner): int {
         $statement = $this->conn->prepare("INSERT INTO quiz (title, description, owner) VALUES (:title, :description, :owner)");
         $statement->execute(array(":title" => $title, ":description" => $description, ":owner" => $owner));
