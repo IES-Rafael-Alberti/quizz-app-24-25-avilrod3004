@@ -142,8 +142,7 @@ label {
     font-size: 1.2rem;
 }
 
-input[type="text"], textarea {
-    /*border: 1px solid black;*/
+input[type="text"], input[type="password"], textarea {
     background-color: var(--white);
     border-radius: 0.5rem;
     padding: 0.2rem 0.5rem;

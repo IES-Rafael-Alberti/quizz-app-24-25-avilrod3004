@@ -5,22 +5,32 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href=../css/reset.css>
+    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" type="text/css" href="../css/header.css">
+    <link rel="stylesheet" type="text/css" href="../css/body.css">
     <title>Login</title>
 </head>
-<body>
-    <header>
-        
+<body class="contenedor-formulario">
+    <header class="encabezado">
+        <img src="../img/quizzes!.png" alt="Quizzes App" class="encabezado__logo">
+        <nav class="encabezado__navegacion">
+            <ul class="navegacion__listado">
+                <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+            </ul>
+        </nav>
     </header>
     
-    <main>
-        <form action="check_user.php" method="post">
+    <main class="principal-formulario">
+        <h1 class="principal__titulo">Iniciar sesión</h1>
+        <form action="check_user.php" method="post" class="principal-formulario__formulario">
             <label for="username">Usuario</label>
             <input type="text" id="username" name="username">
 
             <label for="password">Contraseña</label>
             <input type="password" id="password" name="password">
 
-            <input type="submit" value="Login">
+            <button type="submit" class="boton">Acceder</button>
         </form>
 
         <?php
@@ -29,9 +39,9 @@
         }
         ?>
     </main>
-    
-    <footer>
-        
+
+    <footer class="pie">
+        <p>soy el footer</p>
     </footer>
 </body>
 </html>
