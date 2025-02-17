@@ -54,6 +54,12 @@ if (!isset($_SESSION["username"])) {
             echo "<p class='lateral__info'>Rol: estudiante</p>";
         }
         ?>
+        <?php
+        if (isset($_SESSION["error"])) {
+            echo '<p class="error">' . $_SESSION["error"] . "</p>";
+            unset($_SESSION["error"]);
+        }
+        ?>
     </aside>
 
     <main class="principal">

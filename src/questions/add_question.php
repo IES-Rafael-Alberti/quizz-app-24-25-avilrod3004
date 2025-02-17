@@ -5,7 +5,9 @@ if (!isset($_SESSION["username"])) {
 }
 
 if (!isset($_POST["quiz_id"])) {
-    die("Error: No se ha proporcionado un ID de quiz.");
+    $_SESSION["error"] = "Error: No se ha proporcionado un ID de quiz.";
+    header("Location: " . $_SERVER['HTTP_REFERER']);
+    exit();
 }
 
 $quiz_id = $_POST["quiz_id"];
@@ -69,8 +71,9 @@ $quiz_id = $_POST["quiz_id"];
         </form>
 
         <?php
-        if (isset($_GET["error"])) {
-            echo '<span class="error">' . $_GET["error"] . "</span>";
+        if (isset($_SESSION["error"])) {
+            echo '<p class="error">' . $_SESSION["error"] . "</p>";
+            unset($_SESSION["error"]);
         }
         ?>
     </main>
