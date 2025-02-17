@@ -38,6 +38,12 @@ class Model {
         return $statement->rowCount();
     }
 
+    public function listar_quizzes() {
+        $statement = $this->conn->prepare("SELECT * FROM quiz");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, "Quiz", array("follow" => true));
+    }
+
     public function obtener_quizzes_instructor($id_instructor): array {
         $statement = $this->conn->prepare("SELECT * FROM quiz WHERE owner = :id_instructor");
         $statement->execute(array(":id_instructor" => $id_instructor));
@@ -56,7 +62,7 @@ class Model {
         return $statement->rowCount();
     }
 
-    public function borrar_quiz($quiz_id) {
+    public function borrar_quiz($quiz_id): int {
         $statement = $this->conn->prepare("DELETE FROM quiz WHERE quiz_id = :quiz_id");
         $statement->execute(array(":quiz_id" => $quiz_id));
         return $statement->rowCount();
