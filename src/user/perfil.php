@@ -107,7 +107,7 @@ if (!isset($_SESSION["username"])) {
             if (empty($lista_quizzes)) {
                 echo "
                         <div class='principal__sin-contenido'>
-                            <p class='sin-contenido__texto'>No quizzes disponibles...</p>
+                            <p class='sin-contenido__texto'>No hay quizzes disponibles...</p>
                         </div>
                     ";
             }
