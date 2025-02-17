@@ -34,9 +34,7 @@ if (!isset($_SESSION["username"])) {
     require_once "../db/Question.php";
 
     if (!isset($_POST["quiz_id"])) {
-        $_SESSION["error"] = "Error: No se ha proporcionado un ID de quiz.";
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit();
+        die("Error: No se ha proporcionado un ID de quiz.");
     }
 
     $quiz_id = $_POST["quiz_id"];
@@ -78,13 +76,6 @@ if (!isset($_SESSION["username"])) {
 
             <button type="submit">Terminar</button>
         </form>
-
-        <?php
-        if (isset($_SESSION["error"])) {
-            echo '<p class="error">' . $_SESSION["error"] . "</p>";
-            unset($_SESSION["error"]);
-        }
-        ?>
     </main>
 
     <footer class="pie">

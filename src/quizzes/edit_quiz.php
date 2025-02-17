@@ -58,9 +58,8 @@ if (!isset($_SESSION["username"])) {
         </form>
 
         <?php
-        if (isset($_SESSION["error"])) {
-            echo '<p class="error">' . $_SESSION["error"] . "</p>";
-            unset($_SESSION["error"]);
+        if (isset($_GET["error"])) {
+            echo '<span class="error">' . $_GET["error"] . "</span>";
         }
         ?>
     </main>

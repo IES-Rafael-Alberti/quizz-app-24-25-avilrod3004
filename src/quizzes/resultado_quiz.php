@@ -2,7 +2,7 @@
 session_start();
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
-    exit();
+    exit;
 }
 
 require_once '../db/model.php';
@@ -11,21 +11,13 @@ require_once "../db/Question.php";
 require_once "../db/Intentos.php";
 
 if (!isset($_POST["quiz_id"])) {
-    $_SESSION["error"] = "Error: No se ha proporcionado un ID de quiz.";
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
+    die("Error: No se ha proporcionado un ID de quiz.");
 }
 
 $quiz_id = $_POST["quiz_id"];
 $my_model = Model::getInstance();
 $quiz = $my_model->obtener_quiz($quiz_id);
 $array_questions = $my_model->obtener_preguntas_quiz($quiz_id);
-
-if (!$quiz || empty($array_questions)) {
-    $_SESSION["error"] = "Error: El quiz no existe o no tiene preguntas.";
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
-}
 
 $total_preguntas = count($array_questions);
 $correctas = 0;
@@ -55,12 +47,6 @@ $score = "$correctas / $total_preguntas (Nota: " . number_format($nota, 2) . ")"
 
 $almacenado = false;
 $almacenado = $my_model->registrar_intento($quiz_id, $_SESSION["id"], number_format($nota, 2));
-
-if (!$almacenado) {
-    $_SESSION["error"] = "Error al guardar tu puntuación.";
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
-}
 ?>
 
 <!doctype html>

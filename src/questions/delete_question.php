@@ -3,16 +3,12 @@
 require_once '../db/model.php';
 
 session_start();
-
 if (!isset($_SESSION["username"])) {
     header("Location: login.php");
-    exit();
 }
 
 if (!isset($_POST["question_id"])) {
-    $_SESSION["error"] = "Error: No se ha proporcionado un ID de la pregunta.";
-    header("Location: " . $_SERVER['HTTP_REFERER']);
-    exit();
+    die("Error: No se ha proporcionado un ID de la pregunta.");
 }
 
 $question_id = $_POST["question_id"];
@@ -22,8 +18,8 @@ $my_model = Model::getInstance();
 
 $resultado = $my_model->borrar_question($question_id);
 
-if (!$resultado) {
-    $_SESSION["error"] = "No se ha podido borrar la pregunta.";
+if ($resultado) {
+    header('Location: ../user/perfil.php');
+} else {
+    header('Location: ../user/perfil.php?error=No se ha podido borrar el quiz');
 }
-header("Location: " . $_SERVER['HTTP_REFERER']);
-exit();

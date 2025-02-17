@@ -1,6 +1,4 @@
 <?php
-session_start(); // Asegurar que la sesión se inicia al principio
-
 require_once "../db/pdo.php";
 
 $username = $_POST["username"];
@@ -10,17 +8,15 @@ $statement = $conn->prepare("SELECT * FROM usuarios WHERE username = :username")
 $statement->execute(array(":username" => $username));
 
 $resultado = $statement->fetchObject();
+$veri=password_verify($password, $resultado->password);
 
-if ($resultado && password_verify($password, $resultado->password)) {
+if ($veri) {
+    session_start();
     $_SESSION["id"] = $resultado->user_id;
-    $_SESSION["username"] = $username;
+    $_SESSION["username"] = $_POST["username"];
     $_SESSION["rol"] = $resultado->rol;
-
+    session_write_close();
     header("Location: /user/perfil.php");
-    exit();
 } else {
-    $_SESSION["error"] = "Usuario y/o clave incorrectos";
-    header("Location: login.php");
-    exit();
+    header("Location: login.php?error=Usuario y/o clave incorrectos");
 }
-

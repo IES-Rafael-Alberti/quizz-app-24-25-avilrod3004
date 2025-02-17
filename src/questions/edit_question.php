@@ -33,9 +33,7 @@ if (!isset($_SESSION["username"])) {
     require_once '../db/Question.php';
 
     if (!isset($_POST["question_id"])) {
-        $_SESSION["error"] = "Error: No se ha proporcionado un ID de la pregunta.";
-        header("Location: " . $_SERVER['HTTP_REFERER']);
-        exit();
+        die("Error: No se ha proporcionado un ID de la pregunta.");
     }
 
     $question_id = $_POST["question_id"];
@@ -78,9 +76,8 @@ if (!isset($_SESSION["username"])) {
         </form>
 
         <?php
-        if (isset($_SESSION["error"])) {
-            echo '<p class="error">' . $_SESSION["error"] . "</p>";
-            unset($_SESSION["error"]);
+        if (isset($_GET["error"])) {
+            echo '<span class="error">' . $_GET["error"] . "</span>";
         }
         ?>
     </main>
