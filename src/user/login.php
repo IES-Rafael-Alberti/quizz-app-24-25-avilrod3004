@@ -16,7 +16,8 @@
         <img src="../img/quizzes!.png" alt="Quizzes App" class="encabezado__logo">
         <nav class="encabezado__navegacion">
             <ul class="navegacion__listado">
-                <li class="listado__opcion"><a href="../user/logout.php" class="opcion__enlace">Cerrar sesión</a></li>
+                <li class="listado__opcion"><a href="../user/login.php" class="opcion__enlace">Iniciar sesión</a></li>
+                <li class="listado__opcion"><a href="../user/register.php" class="opcion__enlace">Crear cuenta</a></li>
             </ul>
         </nav>
     </header>
