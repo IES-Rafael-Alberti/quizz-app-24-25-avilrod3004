@@ -1,26 +1,35 @@
 .contenedor {
     display: grid;
-    grid-template-columns: 25% 75%; /* Aside ocupa el 25%, Main el 75% */
-    grid-template-rows: auto 1fr auto; /* Header, contenido flexible, footer */
+    grid-template-columns: 25% 75%;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "header header"
         "aside main"
         "footer footer";
 
-    height: 100vh; /* Para que la grid ocupe toda la pantalla */
+    height: 100vh;
     margin: 0;
 }
 
 .contenedor-formulario {
     display: grid;
-    grid-template-columns: 100%; /* Aside ocupa el 25%, Main el 75% */
-    grid-template-rows: auto 1fr auto; /* Header, contenido flexible, footer */
+    grid-template-columns: 100%;
+    grid-template-rows: auto 1fr auto;
     grid-template-areas:
         "header header"
         "formulario formulario"
         "footer footer";
 
-    height: 100vh; /* Para que la grid ocupe toda la pantalla */
+    height: 100vh;
+    margin: 0;
+}
+
+.contenedor-inicio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 100vh;
     margin: 0;
 }
 
@@ -28,7 +37,7 @@
 
 .encabezado {
     grid-area: header;
-    background-color: var(--secundaty-color-hover); /* Solo para visualizar mejor */
+    background-color: var(--secundaty-color-hover);
     padding: 1rem;
 }
 
@@ -41,7 +50,7 @@
 
 .lateral {
     grid-area: aside;
-    background-color: var(--secundary-color); /* Color de fondo */
+    background-color: var(--secundary-color);
     padding: 1rem;
 
     text-align: center;
@@ -62,6 +71,19 @@
 
 
 /* --- MAIN - PRINCIPAL --- */
+
+.inicio {
+    background-color: var(--secundary-color);
+    border-radius: 1rem;
+    padding: 2rem;
+    box-shadow: grey 0.2rem 0.5rem 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    width: 50%;
+}
 
 .principal {
     grid-area: main;
