@@ -8,6 +8,7 @@ if (!isset($_SESSION["username"])) {
 require_once '../db/model.php';
 require_once '../db/Quiz.php';
 require_once "../db/Question.php";
+require_once "../db/Intentos.php";
 
 if (!isset($_POST["quiz_id"])) {
     die("Error: No se ha proporcionado un ID de quiz.");
@@ -43,6 +44,9 @@ foreach ($array_questions as $question) {
 
 $nota = ($correctas / $total_preguntas) * 10;
 $score = "$correctas / $total_preguntas (Nota: " . number_format($nota, 2) . ")";
+
+$almacenado = false;
+$almacenado = $my_model->registrar_intento($quiz_id, $_SESSION["id"], number_format($nota, 2));
 ?>
 
 <!doctype html>
@@ -67,9 +71,21 @@ $score = "$correctas / $total_preguntas (Nota: " . number_format($nota, 2) . ")"
     </header>
 
     <aside class="lateral">
+        <?php
+        $historial_resultados = $my_model->obtener_intentos_quiz_user($quiz_id, $_SESSION["id"]);
+        $suma_puntuacion = 0;
+
+        foreach ($historial_resultados as $intento) {
+            $suma_puntuacion += $intento->getPuntuacion();
+        }
+        ?>
         <h1 class="lateral__nombre">Estadistica</h1>
-        <p class="lateral__info">Puntuación media: </p>
-        <p class="lateral__info">Número de intentos: </p>
+        <p class="lateral__info">Puntuación media: <?= $suma_puntuacion / count($historial_resultados) ?></p>
+        <p class="lateral__info">Número de intentos: <?= count($historial_resultados) ?></p>
+
+        <form action="../user/perfil.php" method="get">
+            <button type="submit" class="boton">Volver al perfil</button>
+        </form>
     </aside>
 
     <main class="principal">
@@ -91,7 +107,6 @@ $score = "$correctas / $total_preguntas (Nota: " . number_format($nota, 2) . ")"
             endforeach;
             ?>
         </ul>
-        <a href="../index.php">Volver al inicio</a>
     </main>
 
     <footer class="pie">

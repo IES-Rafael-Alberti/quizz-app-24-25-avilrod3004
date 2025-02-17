@@ -101,4 +101,19 @@ class Model {
         $statement->execute(array(":question_id" => $question_id));
         return $statement->rowCount();
     }
+
+
+    // TABLA DE INTENTOS
+
+    public function registrar_intento ($quiz_id, $user_id, $puntuacion): int {
+        $statement = $this->conn->prepare("INSERT INTO intentos (quiz_id, user_id, puntuacion) VALUES (:quiz_id, :user_id, :puntuacion)");
+        $statement->execute(array(":quiz_id" => $quiz_id, ':user_id' => $user_id, ':puntuacion' => $puntuacion));
+        return $statement->rowCount();
+    }
+
+    public function obtener_intentos_quiz_user ($quiz_id, $user_id): array {
+        $statement = $this->conn->prepare("SELECT * FROM intentos WHERE quiz_id = :quiz_id AND user_id = :user_id");
+        $statement->execute(array(":quiz_id" => $quiz_id, ':user_id' => $user_id));
+        return $statement->fetchAll(PDO::FETCH_CLASS, "Intentos", array("follow" => true));
+    }
 }
